@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cek NIM Mahasiswa Baru | UM Banjarmasin</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div class="card">
+
+      <div class="logo">🎓</div>
+
+      <h1>Cek NIM<br>Mahasiswa Baru</h1>
+
+      <p class="university">
+        Universitas Muhammadiyah Banjarmasin
+      </p>
+
+      <p class="description">
+        Masukkan data diri Anda sesuai data pendaftaran
+        untuk melihat Nomor Induk Mahasiswa (NIM).
+      </p>
+
+      <form id="nimForm">
+
+        <div class="form-group">
+          <label for="nama">Nama Mahasiswa</label>
+          <input
+            type="text"
+            id="nama"
+            placeholder="Masukkan nama lengkap"
+            autocomplete="name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="prodi">Program Studi</label>
+          <input
+            type="text"
+            id="prodi"
+            placeholder="Masukkan program studi"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="tanggalLahir">Tanggal Lahir</label>
+          <input
+            type="date"
+            id="tanggalLahir"
+            required
+          >
+        </div>
+
+        <button type="submit" id="btnCari">
+          Lihat NIM
+        </button>
+
+      </form>
+
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <span>Mencari data...</span>
+      </div>
+
+      <div id="hasil" class="hasil hidden">
+
+        <div class="success-icon">✓</div>
+
+        <p class="hasil-label">NIM ANDA</p>
+
+        <div class="nim-box">
+          <span id="nim"></span>
+        </div>
+
+        <button type="button" id="btnCopy" class="copy-button">
+          📋 Salin NIM
+        </button>
+
+        <p id="copyMessage" class="copy-message"></p>
+
+        <p class="note">
+          Simpan NIM Anda untuk keperluan akademik dan administrasi
+          selama menjadi mahasiswa.
+        </p>
+
+        <button type="button" id="btnReset" class="reset-button">
+          Cek Data Lain
+        </button>
+
+      </div>
+
+      <div id="error" class="error hidden"></div>
+
+    </div>
+
+    <footer>
+      © 2026 Universitas Muhammadiyah Banjarmasin
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
