@@ -16,6 +16,9 @@ const prodiInput =
 const tanggalLahirInput =
   document.getElementById("tanggalLahir");
 
+const tanggalLahirDisplay =
+  document.getElementById("tanggalLahirDisplay");
+
 const btnCari =
   document.getElementById("btnCari");
 
