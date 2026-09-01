@@ -1,13 +1,32 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Cek Nomor Induk Mahasiswa (NIM) Mahasiswa Baru Universitas Muhammadiyah Banjarmasin."
+  >
+
+  <meta
+    name="theme-color"
+    content="#00897b"
+  >
 
   <title>Cek NIM Mahasiswa Baru | UM Banjarmasin</title>
 
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
@@ -15,113 +34,247 @@
 
     <div class="card">
 
+      <!-- LOGO -->
       <div class="logo">
+
         <img
           src="Logo.webp"
           alt="Universitas Muhammadiyah Banjarmasin"
         >
+
       </div>
 
-      <h1>Cek NIM<br>Mahasiswa Baru</h1>
+
+      <!-- JUDUL -->
+      <h1>
+        Cek NIM<br>
+        Mahasiswa Baru
+      </h1>
+
 
       <p class="university">
         Universitas Muhammadiyah Banjarmasin
       </p>
+
 
       <p class="description">
         Masukkan data diri Anda sesuai data pendaftaran
         untuk melihat Nomor Induk Mahasiswa (NIM).
       </p>
 
+
+      <!-- FORM -->
       <form id="nimForm">
 
+
+        <!-- ANGKATAN -->
         <div class="form-group">
-          <label for="nama">Nama Mahasiswa</label>
+
+          <label for="angkatan">
+            Angkatan
+          </label>
+
+          <select
+            id="angkatan"
+            required
+          >
+
+            <option
+              value=""
+              selected
+              disabled
+            >
+              Memuat angkatan...
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- NAMA -->
+        <div class="form-group">
+
+          <label for="nama">
+            Nama Mahasiswa
+          </label>
+
           <input
             type="text"
             id="nama"
             placeholder="Masukkan nama lengkap"
             autocomplete="name"
+            autocapitalize="words"
             required
           >
+
         </div>
 
+
+        <!-- PROGRAM STUDI -->
         <div class="form-group">
-          <label for="angkatan">Angkatan</label>
-          <select id="angkatan" required>
-            <option value="" selected disabled>
-              Memuat angkatan...
-            </option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label for="prodi">Program Studi</label>
-          <select id="prodi" required>
-            <option value="" selected disabled>
+
+          <label for="prodi">
+            Program Studi
+          </label>
+
+          <select
+            id="prodi"
+            required
+          >
+
+            <option
+              value=""
+              selected
+              disabled
+            >
               Memuat program studi...
             </option>
+
           </select>
+
         </div>
 
+
+        <!-- TANGGAL LAHIR -->
         <div class="form-group">
-          <label for="tanggalLahir">Tanggal Lahir</label>
+
+          <label for="tanggalLahir">
+            Tanggal Lahir
+          </label>
+
           <input
             type="date"
             id="tanggalLahir"
             required
           >
+
         </div>
 
-        <button type="submit" id="btnCari">
+
+        <!-- TOMBOL -->
+        <button
+          type="submit"
+          id="btnCari"
+        >
           Lihat NIM
         </button>
 
+
       </form>
 
-      <div id="loading" class="loading hidden">
+
+      <!-- LOADING -->
+      <div
+        id="loading"
+        class="loading hidden"
+      >
+
         <div class="spinner"></div>
-        <span>Mencari data...</span>
+
+        <span>
+          Mencari data mahasiswa...
+        </span>
+
       </div>
 
-      <div id="hasil" class="hasil hidden">
 
-        <div class="success-icon">✓</div>
+      <!-- HASIL -->
+      <div
+        id="hasil"
+        class="hasil hidden"
+      >
 
-        <p class="hasil-label">NIM ANDA</p>
-
-        <div class="nim-box">
-          <span id="nim"></span>
+        <div class="success-icon">
+          ✓
         </div>
 
-        <button type="button" id="btnCopy" class="copy-button">
+
+        <p class="success-title">
+          Data Ditemukan
+        </p>
+
+
+        <p class="hasil-label">
+          NOMOR INDUK MAHASISWA
+        </p>
+
+
+        <div class="nim-box">
+
+          <span id="nim"></span>
+
+        </div>
+
+
+        <!-- COPY -->
+        <button
+          type="button"
+          id="btnCopy"
+          class="copy-button"
+        >
           📋 Salin NIM
         </button>
 
-        <p id="copyMessage" class="copy-message"></p>
 
-        <p class="note">
-          Simpan NIM Anda untuk keperluan akademik dan administrasi
-          selama menjadi mahasiswa.
-        </p>
+        <p
+          id="copyMessage"
+          class="copy-message"
+        ></p>
 
-        <button type="button" id="btnReset" class="reset-button">
+
+        <div class="info-box">
+
+          <strong>Informasi</strong>
+
+          <p>
+            NIM merupakan nomor identitas resmi mahasiswa
+            yang digunakan untuk keperluan akademik,
+            administrasi, dan akses Sistem Informasi Akademik
+            (SIAKAD).
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          id="btnReset"
+          class="reset-button"
+        >
           Cek Data Lain
         </button>
 
+
       </div>
 
-      <div id="error" class="error hidden"></div>
+
+      <!-- ERROR -->
+      <div
+        id="error"
+        class="error hidden"
+      ></div>
+
 
     </div>
 
+
+    <!-- FOOTER -->
     <footer>
-      © 2026 Universitas Muhammadiyah Banjarmasin
+
+      Universitas Muhammadiyah Banjarmasin
+      <br>
+      © 2026
+
     </footer>
 
+
   </main>
+
 
   <script src="script.js"></script>
 
 </body>
+
 </html>
+```
