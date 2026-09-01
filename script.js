@@ -1,4 +1,3 @@
-```javascript
 const API_URL =
   "https://script.google.com/macros/s/AKfycbyeLiyXdU6aO84XXUpvnr10f2pbZHdKUKU3jbguz5Qn-SGZb-zvlBckhyyxwguzsgF8/exec";
 
@@ -491,4 +490,3 @@ function sembunyikanSemuaPesan() {
 // ========================================
 
 loadOptions();
-```
