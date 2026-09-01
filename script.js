@@ -19,6 +19,35 @@ const tanggalLahirInput =
 const tanggalLahirDisplay =
   document.getElementById("tanggalLahirDisplay");
 
+// ========================================
+// DATE PICKER DISPLAY
+// ========================================
+
+tanggalLahirInput.addEventListener(
+  "change",
+  function() {
+
+    if (!this.value) {
+      tanggalLahirDisplay.value = "";
+      return;
+    }
+
+    // Nilai dari input date:
+    // YYYY-MM-DD
+    const bagian = this.value.split("-");
+
+    const tahun = bagian[0];
+    const bulan = bagian[1];
+    const hari = bagian[2];
+
+    // Tampilkan:
+    // DD/MM/YYYY
+    tanggalLahirDisplay.value =
+      hari + "/" + bulan + "/" + tahun;
+
+  }
+);
+
 const btnCari =
   document.getElementById("btnCari");
 
@@ -42,34 +71,6 @@ const copyMessage =
 
 const btnReset =
   document.getElementById("btnReset");
-
-// ========================================
-// DATE PICKER
-// ========================================
-
-tanggalLahirInput.addEventListener(
-  "change",
-  function() {
-
-    if (!this.value) {
-      tanggalLahirDisplay.value = "";
-      return;
-    }
-
-    // Nilai input date selalu YYYY-MM-DD
-    const bagian = this.value.split("-");
-
-    const tahun = bagian[0];
-    const bulan = bagian[1];
-    const hari = bagian[2];
-
-    // Tampilkan DD/MM/YYYY
-    tanggalLahirDisplay.value =
-      hari + "/" + bulan + "/" + tahun;
-
-  }
-);
-
 
 // ========================================
 // LOAD OPTIONS
