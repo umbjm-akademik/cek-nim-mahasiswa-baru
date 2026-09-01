@@ -66,101 +66,54 @@
       <!-- FORM -->
       <form id="nimForm">
 
-
-        <!-- ANGKATAN -->
+        <!-- Nama Mahasiswa -->
         <div class="form-group">
-
-          <label for="angkatan">
-            Angkatan
-          </label>
-
-          <select
-            id="angkatan"
-            required
-          >
-
-            <option
-              value=""
-              selected
-              disabled
-            >
-              Memuat angkatan...
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <!-- NAMA -->
-        <div class="form-group">
-
-          <label for="nama">
-            Nama Mahasiswa
-          </label>
-
+          <label for="nama">Nama Mahasiswa</label>
           <input
             type="text"
             id="nama"
+            name="nama"
             placeholder="Masukkan nama lengkap"
             autocomplete="name"
-            autocapitalize="words"
             required
           >
-
         </div>
-
-
-        <!-- PROGRAM STUDI -->
+      
+      
+        <!-- Angkatan -->
         <div class="form-group">
-
-          <label for="prodi">
-            Program Studi
-          </label>
-
-          <select
-            id="prodi"
-            required
-          >
-
-            <option
-              value=""
-              selected
-              disabled
-            >
-              Memuat program studi...
-            </option>
-
+          <label for="angkatan">Angkatan</label>
+          <select id="angkatan" name="angkatan" required>
+            <option value="">Memuat angkatan...</option>
           </select>
-
         </div>
-
-
-        <!-- TANGGAL LAHIR -->
+      
+      
+        <!-- Program Studi -->
         <div class="form-group">
-
-          <label for="tanggalLahir">
-            Tanggal Lahir
-          </label>
-
+          <label for="prodi">Program Studi</label>
+          <select id="prodi" name="prodi" required>
+            <option value="">Memuat program studi...</option>
+          </select>
+        </div>
+      
+      
+        <!-- Tanggal Lahir -->
+        <div class="form-group">
+          <label for="tanggalLahir">Tanggal Lahir</label>
           <input
             type="date"
             id="tanggalLahir"
+            name="tanggalLahir"
             required
           >
-
         </div>
-
-
-        <!-- TOMBOL -->
-        <button
-          type="submit"
-          id="btnCari"
-        >
+      
+      
+        <button type="submit" id="btnCari">
           Lihat NIM
         </button>
-
-
+      
       </form>
 
 
