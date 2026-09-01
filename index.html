@@ -100,16 +100,26 @@
         <!-- Tanggal Lahir -->
         <div class="form-group">
           <label for="tanggalLahir">Tanggal Lahir</label>
-          <input
-            type="text"
-            id="tanggalLahir"
-            name="tanggalLahir"
-            placeholder="DD/MM/YYYY"
-            inputmode="numeric"
-            maxlength="10"
-            autocomplete="bday"
-            required
-          >
+        
+          <div class="date-picker-wrapper">
+        
+            <input
+              type="text"
+              id="tanggalLahirDisplay"
+              placeholder="Pilih tanggal lahir"
+              readonly
+              required
+            >
+        
+            <input
+              type="date"
+              id="tanggalLahir"
+              name="tanggalLahir"
+              required
+            >
+        
+          </div>
+        
         </div>
       
       
