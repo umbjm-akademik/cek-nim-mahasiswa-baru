@@ -2,7 +2,8 @@ const API_URL =
   "https://script.google.com/macros/s/AKfycbyeLiyXdU6aO84XXUpvnr10f2pbZHdKUKU3jbguz5Qn-SGZb-zvlBckhyyxwguzsgF8/exec";
 
 
-const form = document.getElementById("nimForm");
+const form =
+  document.getElementById("nimForm");
 
 const angkatanInput =
   document.getElementById("angkatan");
@@ -18,35 +19,6 @@ const tanggalLahirInput =
 
 const tanggalLahirDisplay =
   document.getElementById("tanggalLahirDisplay");
-
-// ========================================
-// DATE PICKER DISPLAY
-// ========================================
-
-tanggalLahirInput.addEventListener(
-  "change",
-  function() {
-
-    if (!this.value) {
-      tanggalLahirDisplay.value = "";
-      return;
-    }
-
-    // Nilai dari input date:
-    // YYYY-MM-DD
-    const bagian = this.value.split("-");
-
-    const tahun = bagian[0];
-    const bulan = bagian[1];
-    const hari = bagian[2];
-
-    // Tampilkan:
-    // DD/MM/YYYY
-    tanggalLahirDisplay.value =
-      hari + "/" + bulan + "/" + tahun;
-
-  }
-);
 
 const btnCari =
   document.getElementById("btnCari");
@@ -72,6 +44,51 @@ const copyMessage =
 const btnReset =
   document.getElementById("btnReset");
 
+
+// ========================================
+// DATE PICKER DISPLAY
+// ========================================
+
+tanggalLahirInput.addEventListener(
+  "change",
+  function() {
+
+    if (!this.value) {
+
+      tanggalLahirDisplay.value = "";
+
+      return;
+
+    }
+
+
+    // Nilai input date:
+    // YYYY-MM-DD
+
+    const bagian =
+      this.value.split("-");
+
+
+    const tahun =
+      bagian[0];
+
+    const bulan =
+      bagian[1];
+
+    const hari =
+      bagian[2];
+
+
+    // Tampilkan:
+    // DD/MM/YYYY
+
+    tanggalLahirDisplay.value =
+      hari + "/" + bulan + "/" + tahun;
+
+  }
+);
+
+
 // ========================================
 // LOAD OPTIONS
 // ========================================
@@ -82,6 +99,7 @@ async function loadOptions() {
 
     const response =
       await fetch(API_URL);
+
 
     const data =
       await response.json();
@@ -114,6 +132,7 @@ async function loadOptions() {
 
     console.error(err);
 
+
     tampilkanError(
       "Daftar pilihan gagal dimuat. Silakan refresh halaman."
     );
@@ -142,10 +161,13 @@ function isiDropdown(
 
   optionDefault.value = "";
 
+
   optionDefault.textContent =
     placeholder;
 
+
   optionDefault.disabled = true;
+
 
   optionDefault.selected = true;
 
@@ -160,11 +182,18 @@ function isiDropdown(
     const option =
       document.createElement("option");
 
-    option.value = item;
 
-    option.textContent = item;
+    option.value =
+      item;
 
-    select.appendChild(option);
+
+    option.textContent =
+      item;
+
+
+    select.appendChild(
+      option
+    );
 
   });
 
@@ -188,11 +217,14 @@ form.addEventListener(
     const angkatan =
       angkatanInput.value;
 
+
     const nama =
       namaInput.value.trim();
 
+
     const prodi =
       prodiInput.value;
+
 
     const tanggalLahir =
       tanggalLahirInput.value;
@@ -215,6 +247,7 @@ form.addEventListener(
 
 
     btnCari.disabled = true;
+
 
     btnCari.textContent =
       "Mencari...";
@@ -303,6 +336,7 @@ form.addEventListener(
 
 
     btnCari.disabled = false;
+
 
     btnCari.textContent =
       "Lihat NIM";
@@ -433,6 +467,10 @@ btnReset.addEventListener(
   function() {
 
     form.reset();
+
+
+    tanggalLahirDisplay.value =
+      "";
 
 
     hasil.classList.add(
