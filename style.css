@@ -1,243 +1,551 @@
+```css
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   background: #f3f6f8;
+
   color: #263238;
+
   min-height: 100vh;
+
 }
+
+
+/* =========================
+   CONTAINER
+========================= */
 
 .container {
+
   width: 100%;
+
   max-width: 480px;
+
   margin: auto;
-  padding: 20px 15px 25px;
+
+  padding: 18px 14px 25px;
+
 }
+
+
+/* =========================
+   CARD
+========================= */
 
 .card {
+
   background: white;
+
   border-radius: 20px;
-  padding: 30px 22px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+  padding: 28px 21px;
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.07);
+
 }
+
+
+/* =========================
+   LOGO
+========================= */
 
 .logo {
+
   width: 100%;
-  max-width: 300px;
+
+  max-width: 290px;
+
   margin: 0 auto 22px;
+
   text-align: center;
+
 }
+
 
 .logo img {
+
   width: 100%;
+
   height: auto;
+
   display: block;
+
 }
+
+
+/* =========================
+   TITLE
+========================= */
 
 h1 {
+
   text-align: center;
+
   font-size: 25px;
+
   line-height: 1.25;
+
   margin-bottom: 8px;
+
 }
+
 
 .university {
+
   text-align: center;
+
   font-size: 14px;
-  font-weight: 600;
+
+  font-weight: 700;
+
   color: #00897b;
-  margin-bottom: 18px;
+
+  line-height: 1.4;
+
+  margin-bottom: 16px;
+
 }
+
 
 .description {
+
   text-align: center;
-  font-size: 14px;
+
+  font-size: 13px;
+
   line-height: 1.6;
+
   color: #68747a;
+
   margin-bottom: 25px;
+
 }
+
+
+/* =========================
+   FORM
+========================= */
 
 .form-group {
-  margin-bottom: 18px;
+
+  margin-bottom: 17px;
+
 }
+
 
 label {
+
   display: block;
+
   font-size: 14px;
-  font-weight: 600;
+
+  font-weight: 700;
+
   margin-bottom: 8px;
+
 }
 
-input {
+
+input,
+select {
+
   width: 100%;
+
   height: 50px;
+
   border: 1px solid #d5dde0;
+
   border-radius: 12px;
+
   padding: 0 14px;
+
   font-size: 15px;
+
   outline: none;
+
   background: white;
+
+  color: #263238;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+
 }
 
-input:focus {
+
+input:focus,
+select:focus {
+
   border-color: #00897b;
-  box-shadow: 0 0 0 3px rgba(0, 137, 123, 0.1);
+
+  box-shadow:
+    0 0 0 3px rgba(0, 137, 123, 0.10);
+
 }
+
+
+/* =========================
+   BUTTON
+========================= */
 
 button {
+
   width: 100%;
+
   height: 52px;
+
   border: none;
+
   border-radius: 12px;
+
   background: #00897b;
+
   color: white;
+
   font-size: 15px;
+
   font-weight: 700;
+
   cursor: pointer;
+
+  transition:
+    transform 0.1s,
+    opacity 0.2s;
+
 }
+
 
 button:active {
+
   transform: scale(0.98);
+
 }
+
+
+button:disabled {
+
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+}
+
+
+/* =========================
+   LOADING
+========================= */
 
 .loading {
+
   margin-top: 20px;
+
   text-align: center;
+
   color: #68747a;
-  font-size: 14px;
+
+  font-size: 13px;
+
 }
+
 
 .spinner {
-  width: 24px;
-  height: 24px;
+
+  width: 25px;
+
+  height: 25px;
+
   border: 3px solid #d8eeee;
+
   border-top-color: #00897b;
+
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin: 0 auto 10px;
+
+  animation:
+    spin 0.8s linear infinite;
+
+  margin:
+    0 auto 10px;
+
 }
+
 
 @keyframes spin {
+
   to {
+
     transform: rotate(360deg);
+
   }
+
 }
+
+
+/* =========================
+   HASIL
+========================= */
 
 .hasil {
+
   margin-top: 25px;
-  text-align: center;
+
   padding-top: 25px;
-  border-top: 1px solid #edf0f1;
+
+  border-top:
+    1px solid #edf0f1;
+
+  text-align: center;
+
 }
+
 
 .success-icon {
+
   width: 50px;
+
   height: 50px;
+
   border-radius: 50%;
+
   background: #e8f5e9;
+
   color: #2e7d32;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-size: 26px;
+
   font-weight: bold;
-  margin: 0 auto 15px;
+
+  margin: 0 auto 12px;
+
 }
+
+
+.success-title {
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: #2e7d32;
+
+  margin-bottom: 18px;
+
+}
+
 
 .hasil-label {
-  font-size: 12px;
+
+  font-size: 11px;
+
   font-weight: 700;
+
   color: #78909c;
-  letter-spacing: 1.5px;
+
+  letter-spacing: 1.4px;
+
   margin-bottom: 8px;
+
 }
+
+
+/* =========================
+   NIM
+========================= */
 
 .nim-box {
+
   background: #f4f8f8;
-  border: 1px dashed #00897b;
+
+  border:
+    1px dashed #00897b;
+
   border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 15px;
+
+  padding: 16px 10px;
+
+  margin-bottom: 14px;
+
 }
+
 
 #nim {
-  font-size: 25px;
+
+  font-size: 26px;
+
   font-weight: 800;
-  letter-spacing: 1px;
+
+  letter-spacing: 1.5px;
+
   color: #00695c;
+
+  word-break: break-all;
+
 }
+
+
+/* =========================
+   COPY
+========================= */
 
 .copy-button {
+
   background: #00695c;
+
 }
+
 
 .copy-message {
+
   min-height: 20px;
+
   margin-top: 8px;
+
   font-size: 13px;
+
   color: #2e7d32;
-  font-weight: 600;
+
+  font-weight: 700;
+
 }
 
-.note {
+
+/* =========================
+   INFO
+========================= */
+
+.info-box {
+
+  background: #f7f9fa;
+
+  border-radius: 12px;
+
+  padding: 13px 14px;
+
+  margin:
+    13px 0 15px;
+
+  text-align: left;
+
   font-size: 12px;
-  line-height: 1.5;
-  color: #78909c;
-  margin: 15px 5px;
+
+  line-height: 1.55;
+
+  color: #607d8b;
+
 }
+
+
+.info-box strong {
+
+  display: block;
+
+  color: #455a64;
+
+  margin-bottom: 4px;
+
+}
+
+
+/* =========================
+   RESET
+========================= */
 
 .reset-button {
+
   background: transparent;
+
   color: #00897b;
-  border: 1px solid #00897b;
-  margin-top: 5px;
+
+  border:
+    1px solid #00897b;
+
 }
+
+
+/* =========================
+   ERROR
+========================= */
 
 .error {
+
   margin-top: 20px;
+
   background: #ffebee;
+
   color: #c62828;
+
   padding: 13px 15px;
+
   border-radius: 10px;
+
   font-size: 13px;
+
   line-height: 1.5;
+
   text-align: center;
+
 }
+
+
+/* =========================
+   HIDDEN
+========================= */
 
 .hidden {
+
   display: none;
+
 }
+
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
+
   text-align: center;
+
   font-size: 11px;
+
+  line-height: 1.6;
+
   color: #90a4ae;
-  margin-top: 18px;
+
+  margin-top: 17px;
+
 }
+
+
+/* =========================
+   DESKTOP
+========================= */
 
 @media (min-width: 600px) {
+
   .container {
-    padding-top: 50px;
+
+    padding-top: 45px;
+
   }
-}
 
-select {
-  width: 100%;
-  height: 50px;
-  border: 1px solid #d5dde0;
-  border-radius: 12px;
-  padding: 0 14px;
-  font-size: 15px;
-  outline: none;
-  background: white;
-  color: #263238;
 }
-
-select:focus {
-  border-color: #00897b;
-  box-shadow: 0 0 0 3px rgba(0, 137, 123, 0.1);
-}
+```
