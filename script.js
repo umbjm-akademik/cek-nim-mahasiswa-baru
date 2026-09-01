@@ -1,41 +1,70 @@
+```javascript
 const API_URL =
   "https://script.google.com/macros/s/AKfycbyeLiyXdU6aO84XXUpvnr10f2pbZHdKUKU3jbguz5Qn-SGZb-zvlBckhyyxwguzsgF8/exec";
 
 
 const form = document.getElementById("nimForm");
 
-const angkatanInput = document.getElementById("angkatan");
-const namaInput = document.getElementById("nama");
-const prodiInput = document.getElementById("prodi");
-const tanggalLahirInput = document.getElementById("tanggalLahir");
+const angkatanInput =
+  document.getElementById("angkatan");
 
-const btnCari = document.getElementById("btnCari");
+const namaInput =
+  document.getElementById("nama");
 
-const loading = document.getElementById("loading");
-const hasil = document.getElementById("hasil");
-const error = document.getElementById("error");
+const prodiInput =
+  document.getElementById("prodi");
 
-const nimElement = document.getElementById("nim");
-const btnCopy = document.getElementById("btnCopy");
-const copyMessage = document.getElementById("copyMessage");
-const btnReset = document.getElementById("btnReset");
+const tanggalLahirInput =
+  document.getElementById("tanggalLahir");
+
+const btnCari =
+  document.getElementById("btnCari");
+
+const loading =
+  document.getElementById("loading");
+
+const hasil =
+  document.getElementById("hasil");
+
+const error =
+  document.getElementById("error");
+
+const nimElement =
+  document.getElementById("nim");
+
+const btnCopy =
+  document.getElementById("btnCopy");
+
+const copyMessage =
+  document.getElementById("copyMessage");
+
+const btnReset =
+  document.getElementById("btnReset");
 
 
 // ========================================
-// LOAD DATA ANGKATAN & PROGRAM STUDI
+// LOAD OPTIONS
 // ========================================
 
 async function loadOptions() {
 
   try {
 
-    const response = await fetch(API_URL);
+    const response =
+      await fetch(API_URL);
 
-    const data = await response.json();
+    const data =
+      await response.json();
+
 
     if (!data.success) {
-      throw new Error("Gagal mengambil data.");
+
+      throw new Error(
+        "Gagal mengambil data."
+      );
+
     }
+
 
     isiDropdown(
       angkatanInput,
@@ -43,18 +72,20 @@ async function loadOptions() {
       "Pilih Angkatan"
     );
 
+
     isiDropdown(
       prodiInput,
       data.prodi,
       "Pilih Program Studi"
     );
 
-  } catch (error) {
 
-    console.error(error);
+  } catch (err) {
+
+    console.error(err);
 
     tampilkanError(
-      "Daftar Angkatan dan Program Studi gagal dimuat. Silakan refresh halaman."
+      "Daftar pilihan gagal dimuat. Silakan refresh halaman."
     );
 
   }
@@ -63,28 +94,44 @@ async function loadOptions() {
 
 
 // ========================================
-// MENGISI DROPDOWN
+// DROPDOWN
 // ========================================
 
-function isiDropdown(select, data, placeholder) {
+function isiDropdown(
+  select,
+  data,
+  placeholder
+) {
 
   select.innerHTML = "";
 
-  const optionDefault = document.createElement("option");
+
+  const optionDefault =
+    document.createElement("option");
+
 
   optionDefault.value = "";
-  optionDefault.textContent = placeholder;
+
+  optionDefault.textContent =
+    placeholder;
+
   optionDefault.disabled = true;
+
   optionDefault.selected = true;
 
-  select.appendChild(optionDefault);
+
+  select.appendChild(
+    optionDefault
+  );
 
 
   data.forEach(item => {
 
-    const option = document.createElement("option");
+    const option =
+      document.createElement("option");
 
     option.value = item;
+
     option.textContent = item;
 
     select.appendChild(option);
@@ -95,213 +142,353 @@ function isiDropdown(select, data, placeholder) {
 
 
 // ========================================
-// FORM SUBMIT
+// SUBMIT
 // ========================================
 
-form.addEventListener("submit", async function (event) {
+form.addEventListener(
+  "submit",
+  async function(event) {
 
-  event.preventDefault();
-
-  sembunyikanSemuaPesan();
-
-  const angkatan = angkatanInput.value;
-  const nama = namaInput.value.trim();
-  const prodi = prodiInput.value;
-  const tanggalLahir = tanggalLahirInput.value;
+    event.preventDefault();
 
 
-  if (!angkatan || !nama || !prodi || !tanggalLahir) {
-
-    tampilkanError(
-      "Silakan lengkapi seluruh data terlebih dahulu."
-    );
-
-    return;
-
-  }
+    sembunyikanSemuaPesan();
 
 
-  // Tampilkan loading
+    const angkatan =
+      angkatanInput.value;
 
-  btnCari.disabled = true;
-  btnCari.textContent = "Mencari...";
+    const nama =
+      namaInput.value.trim();
 
-  loading.classList.remove("hidden");
+    const prodi =
+      prodiInput.value;
 
-
-  try {
-
-    const response = await fetch(API_URL, {
-
-      method: "POST",
-
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8"
-      },
-
-      body: JSON.stringify({
-
-        angkatan: angkatan,
-        nama: nama,
-        prodi: prodi,
-        tanggalLahir: tanggalLahir
-
-      })
-
-    });
+    const tanggalLahir =
+      tanggalLahirInput.value;
 
 
-    const data = await response.json();
+    if (
+      !angkatan ||
+      !nama ||
+      !prodi ||
+      !tanggalLahir
+    ) {
 
+      tampilkanError(
+        "Silakan lengkapi seluruh data terlebih dahulu."
+      );
 
-    loading.classList.add("hidden");
-
-
-    if (data.success) {
-
-      tampilkanHasil(data.nim);
-
-    } else {
-
-      tampilkanError(data.message);
+      return;
 
     }
 
 
-  } catch (error) {
+    btnCari.disabled = true;
 
-    console.error(error);
+    btnCari.textContent =
+      "Mencari...";
 
-    loading.classList.add("hidden");
 
-    tampilkanError(
-      "Tidak dapat terhubung ke server. Silakan coba kembali."
+    loading.classList.remove(
+      "hidden"
     );
 
+
+    try {
+
+      const response =
+        await fetch(
+          API_URL,
+          {
+
+            method: "POST",
+
+            headers: {
+
+              "Content-Type":
+                "text/plain;charset=utf-8"
+
+            },
+
+            body: JSON.stringify({
+
+              angkatan:
+                angkatan,
+
+              nama:
+                nama,
+
+              prodi:
+                prodi,
+
+              tanggalLahir:
+                tanggalLahir
+
+            })
+
+          }
+        );
+
+
+      const data =
+        await response.json();
+
+
+      loading.classList.add(
+        "hidden"
+      );
+
+
+      if (data.success) {
+
+        tampilkanHasil(
+          data.nim
+        );
+
+      } else {
+
+        tampilkanError(
+          data.message
+        );
+
+      }
+
+
+    } catch (err) {
+
+      console.error(err);
+
+
+      loading.classList.add(
+        "hidden"
+      );
+
+
+      tampilkanError(
+        "Tidak dapat terhubung ke server. Silakan coba kembali."
+      );
+
+    }
+
+
+    btnCari.disabled = false;
+
+    btnCari.textContent =
+      "Lihat NIM";
+
   }
-
-
-  btnCari.disabled = false;
-  btnCari.textContent = "Lihat NIM";
-
-});
+);
 
 
 // ========================================
-// TAMPILKAN HASIL
+// HASIL
 // ========================================
 
 function tampilkanHasil(nim) {
 
-  hasil.classList.remove("hidden");
+  hasil.classList.remove(
+    "hidden"
+  );
 
-  nimElement.textContent = nim;
 
-  copyMessage.textContent = "";
+  nimElement.textContent =
+    nim;
+
+
+  copyMessage.textContent =
+    "";
+
 
   hasil.scrollIntoView({
+
     behavior: "smooth",
+
     block: "center"
+
   });
 
 }
 
 
 // ========================================
-// SALIN NIM
+// COPY NIM
 // ========================================
 
-btnCopy.addEventListener("click", async function () {
+btnCopy.addEventListener(
+  "click",
+  async function() {
 
-  const nim = nimElement.textContent;
+    const nim =
+      nimElement.textContent;
 
-  try {
 
-    await navigator.clipboard.writeText(nim);
+    try {
 
-    copyMessage.textContent =
-      "✓ NIM berhasil disalin.";
+      await navigator.clipboard
+        .writeText(nim);
 
-  } catch (error) {
 
-    // Fallback untuk browser tertentu
+      copyMessage.textContent =
+        "✓ NIM berhasil disalin. Silakan tempel di WhatsApp atau Catatan.";
 
-    const textarea =
-      document.createElement("textarea");
 
-    textarea.value = nim;
+      btnCopy.textContent =
+        "✓ NIM Tersalin";
 
-    document.body.appendChild(textarea);
 
-    textarea.select();
+      setTimeout(() => {
 
-    document.execCommand("copy");
+        btnCopy.textContent =
+          "📋 Salin NIM";
 
-    textarea.remove();
+      }, 2500);
 
-    copyMessage.textContent =
-      "✓ NIM berhasil disalin.";
+
+    } catch (err) {
+
+      const textarea =
+        document.createElement(
+          "textarea"
+        );
+
+
+      textarea.value =
+        nim;
+
+
+      document.body.appendChild(
+        textarea
+      );
+
+
+      textarea.select();
+
+
+      document.execCommand(
+        "copy"
+      );
+
+
+      textarea.remove();
+
+
+      copyMessage.textContent =
+        "✓ NIM berhasil disalin. Silakan tempel di WhatsApp atau Catatan.";
+
+
+      btnCopy.textContent =
+        "✓ NIM Tersalin";
+
+
+      setTimeout(() => {
+
+        btnCopy.textContent =
+          "📋 Salin NIM";
+
+      }, 2500);
+
+    }
 
   }
-
-});
+);
 
 
 // ========================================
 // RESET
 // ========================================
 
-btnReset.addEventListener("click", function () {
+btnReset.addEventListener(
+  "click",
+  function() {
 
-  form.reset();
+    form.reset();
 
-  hasil.classList.add("hidden");
 
-  error.classList.add("hidden");
+    hasil.classList.add(
+      "hidden"
+    );
 
-  copyMessage.textContent = "";
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+    error.classList.add(
+      "hidden"
+    );
 
-});
+
+    copyMessage.textContent =
+      "";
+
+
+    window.scrollTo({
+
+      top: 0,
+
+      behavior: "smooth"
+
+    });
+
+  }
+);
 
 
 // ========================================
 // ERROR
 // ========================================
 
-function tampilkanError(message) {
+function tampilkanError(
+  message
+) {
 
-  error.textContent = message;
+  error.textContent =
+    message;
 
-  error.classList.remove("hidden");
+
+  error.classList.remove(
+    "hidden"
+  );
+
 
   error.scrollIntoView({
+
     behavior: "smooth",
+
     block: "center"
+
   });
 
 }
 
 
+// ========================================
+// HIDE MESSAGE
+// ========================================
+
 function sembunyikanSemuaPesan() {
 
-  error.classList.add("hidden");
+  error.classList.add(
+    "hidden"
+  );
 
-  hasil.classList.add("hidden");
 
-  loading.classList.add("hidden");
+  hasil.classList.add(
+    "hidden"
+  );
 
-  copyMessage.textContent = "";
+
+  loading.classList.add(
+    "hidden"
+  );
+
+
+  copyMessage.textContent =
+    "";
 
 }
 
 
 // ========================================
-// MULAI
+// START
 // ========================================
 
 loadOptions();
+```
